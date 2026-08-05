@@ -1,24 +1,21 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 function AddEmployee() {
-  const [form, setForm] = useState({
-    name: '', email: '', department: '', leaveBalance: ''
-  });
+  const [form, setForm] = useState({ name: '', email: '', department: '', leaveBalance: '' });
   const [message, setMessage] = useState('');
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('${API_BASE_URL}/api/employees', form)
+    axios.post(`${API_BASE_URL}/api/employees`, form)
       .then(() => {
         setMessage('Employee added');
         setForm({ name: '', email: '', department: '', leaveBalance: '' });
       })
-      .catch(err => setMessage('Error adding employee'));
+      .catch(() => setMessage('Error adding employee'));
   };
 
   return (

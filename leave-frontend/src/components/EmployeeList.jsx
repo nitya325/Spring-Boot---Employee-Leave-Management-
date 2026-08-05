@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 function EmployeeList() {
   const [employees, setEmployees] = useState([]);
@@ -16,11 +17,7 @@ function EmployeeList() {
       <table border="1">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Leave Balance</th>
+            <th>ID</th><th>Name</th><th>Email</th><th>Department</th><th>Leave Balance</th>
           </tr>
         </thead>
         <tbody>

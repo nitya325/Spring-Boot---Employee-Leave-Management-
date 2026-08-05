@@ -1,22 +1,21 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 function LeaveList() {
   const [leaves, setLeaves] = useState([]);
   const [employeeId, setEmployeeId] = useState('1');
 
   const fetchLeaves = () => {
-    axios.get(`${API_BASE_URL}/api/employees/${employeeId}/leaves`)
+    axios.get(`${API_BASE_URL}/api/leaves/employee/${employeeId}`)
       .then(res => setLeaves(res.data))
       .catch(err => console.error(err));
   };
 
-  useEffect(() => {
-    fetchLeaves();
-  }, []);
+  useEffect(() => { fetchLeaves(); }, []);
 
   const updateStatus = (id, status) => {
-    axios.put(`http://localhost:8080/api/leaves/${id}/status?status=${status}`)
+    axios.put(`${API_BASE_URL}/api/leaves/${id}/status?status=${status}`)
       .then(() => fetchLeaves())
       .catch(err => alert(err.response?.data?.error || 'Error'));
   };
@@ -29,8 +28,7 @@ function LeaveList() {
       <table border="1">
         <thead>
           <tr>
-            <th>ID</th><th>Employee</th><th>Start</th><th>End</th>
-            <th>Reason</th><th>Status</th><th>Action</th>
+            <th>ID</th><th>Employee</th><th>Start</th><th>End</th><th>Reason</th><th>Status</th><th>Action</th>
           </tr>
         </thead>
         <tbody>
