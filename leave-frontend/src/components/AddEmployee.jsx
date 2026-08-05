@@ -13,7 +13,7 @@ function AddEmployee() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/employees', form)
+    axios.post('${API_BASE_URL}/api/employees', form)
       .then(() => {
         setMessage('Employee added');
         setForm({ name: '', email: '', department: '', leaveBalance: '' });

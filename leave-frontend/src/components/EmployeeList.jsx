@@ -5,7 +5,7 @@ function EmployeeList() {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/employees')
+    axios.get(`${API_BASE_URL}/api/employees`)
       .then(res => setEmployees(res.data.content))
       .catch(err => console.error(err));
   }, []);

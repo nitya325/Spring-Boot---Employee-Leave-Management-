@@ -16,7 +16,7 @@ function ApplyLeave() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/leaves', form)
+    axios.post(`${API_BASE_URL}/api/employees`, form)
       .then(() => setMessage('Leave applied successfully'))
       .catch(err => setMessage('Error: ' + err.response?.data?.error || 'Failed'));
   };

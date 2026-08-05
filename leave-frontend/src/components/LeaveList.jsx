@@ -6,7 +6,7 @@ function LeaveList() {
   const [employeeId, setEmployeeId] = useState('1');
 
   const fetchLeaves = () => {
-    axios.get(`http://localhost:8080/api/leaves/employee/${employeeId}`)
+    axios.get(`${API_BASE_URL}/api/employees/${employeeId}/leaves`)
       .then(res => setLeaves(res.data))
       .catch(err => console.error(err));
   };
